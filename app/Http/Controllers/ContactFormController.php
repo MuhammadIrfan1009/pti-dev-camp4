@@ -5,15 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\ContactForm;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Inertia\Response; 
+use Illuminate\Http\RedirectResponse; 
 
 class ContactFormController extends Controller
 {
-     public function create()
+    public function create(): Response
     {
         return Inertia::render('ContactForm');
     }
  
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
             'name'    => 'required|string|max:255',
